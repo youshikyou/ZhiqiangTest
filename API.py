@@ -1,6 +1,6 @@
 import requests
 import re
-from bs4 import BeautifulSoup,SoupStrainer
+from bs4 import BeautifulSoup
 import urllib.request
 
 # target url
@@ -28,7 +28,7 @@ class get():
 
         url_req = urllib.request.urlopen(url)
         soup = BeautifulSoup(url_req, parser, from_encoding=url_req.info().get_param('charset'))
-        for link in soup.find_all('a', href=re.compile("http:")):
+        for link in soup.find_all('a', href=re.compile("https")):
             res_url = link['href'] +".json"
             print(res_url)
    
